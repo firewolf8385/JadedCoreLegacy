@@ -142,6 +142,27 @@ public class ItemBuilder {
     }
 
     /**
+     * Add several lines of lore, each starting with the same value.
+     * @param arr Array of Strings to add as lore.
+     * @param starter Started string to be added before each line.
+     * @return ItemBuilder.
+     */
+    public ItemBuilder addLore(String[] arr, String starter) {
+        List<String> lore = this.itemMeta.getLore();
+
+        if(lore == null) {
+            lore = new ArrayList<>();
+        }
+
+        for(String str : arr) {
+            lore.add(ChatUtils.translateLegacy(starter + str));
+        }
+
+        this.itemMeta.setLore(lore);
+        return this;
+    }
+
+    /**
      * Creates the ItemStack.
      * @return Built ItemStack.
      */
