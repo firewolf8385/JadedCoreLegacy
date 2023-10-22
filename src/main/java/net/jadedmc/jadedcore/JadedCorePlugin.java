@@ -29,6 +29,7 @@ import net.jadedmc.jadedcore.features.player.JadedPlayerManager;
 import net.jadedmc.jadedcore.listeners.PlayerJoinListener;
 import net.jadedmc.jadedcore.listeners.PlayerQuitListener;
 import net.jadedmc.jadedcore.utils.chat.ChatUtils;
+import net.jadedmc.jadedcore.utils.gui.GUIListeners;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -58,6 +59,7 @@ public final class JadedCorePlugin extends JavaPlugin {
     }
 
     private void registerListeners() {
+        getServer().getPluginManager().registerEvents(new GUIListeners(), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
     }
