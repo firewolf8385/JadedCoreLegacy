@@ -4,6 +4,7 @@ main: net.jadedmc.jadedcore.JadedCorePlugin
 depend:
   - LuckPerms
   - PlaceholderAPI
+  - JadedChat
 
 commands:
   api:
