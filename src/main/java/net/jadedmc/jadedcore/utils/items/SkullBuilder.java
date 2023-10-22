@@ -24,11 +24,16 @@
  */
 package net.jadedmc.jadedcore.utils.items;
 
-import com.cryptomorin.xseries.SkullUtils;
+import com.cryptomorin.xseries.XMaterial;
+import com.mojang.authlib.GameProfile;
+import com.mojang.authlib.properties.Property;
 import org.bukkit.Material;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.SkullMeta;
+
+import java.lang.reflect.Field;
+import java.util.UUID;
 
 /**
  * Makes player skulls easier to create.
@@ -40,12 +45,29 @@ public class SkullBuilder {
 
     /**
      * Create a SkullBuilder using a given identifier.
-     * Can be a uuid, username, url, or base64.
-     * @param identifier Identifier.
+     * Uses Base64.
+     * @param base64 Base64 to use.
      */
-    public SkullBuilder(String identifier) {
+    public SkullBuilder(String base64) {
         itemStack = new ItemStack(Material.SKULL_ITEM);
-        skullMeta = SkullUtils.applySkin(itemStack.getItemMeta(), identifier);
+        this.itemStack.setDurability((short) 3);
+
+        skullMeta = (SkullMeta) itemStack.getItemMeta();
+
+        // https://www.spigotmc.org/threads/how-to-create-heads-with-custom-base64-texture.352562/
+        {
+            GameProfile profile = new GameProfile(UUID.randomUUID(), "");
+            profile.getProperties().put("textures", new Property("textures", base64));
+            Field profileField = null;
+            try {
+                profileField = skullMeta.getClass().getDeclaredField("profile");
+                profileField.setAccessible(true);
+                profileField.set(skullMeta, profile);
+            }
+            catch (IllegalArgumentException | IllegalAccessException | NoSuchFieldException | SecurityException e) {
+                e.printStackTrace();
+            }
+        }
     }
 
     /**
@@ -53,7 +75,9 @@ public class SkullBuilder {
      * @param offlinePlayer (Offline)Player to use.
      */
     public SkullBuilder(OfflinePlayer offlinePlayer) {
-        this(offlinePlayer.getUniqueId().toString());
+        this.itemStack = new ItemBuilder(XMaterial.PLAYER_HEAD).build();
+        this.skullMeta = (SkullMeta) this.itemStack.getItemMeta();
+        this.skullMeta.setOwner(offlinePlayer.getName());
     }
 
     /**
