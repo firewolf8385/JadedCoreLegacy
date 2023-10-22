@@ -61,6 +61,8 @@ public final class JadedCorePlugin extends JavaPlugin {
 
         AbstractCommand.registerCommands(this);
         registerListeners();
+
+        getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
     }
 
     private void registerListeners() {
