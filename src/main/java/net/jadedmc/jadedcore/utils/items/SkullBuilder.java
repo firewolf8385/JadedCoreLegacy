@@ -44,7 +44,7 @@ public class SkullBuilder {
      * @param identifier Identifier.
      */
     public SkullBuilder(String identifier) {
-        itemStack = new ItemStack(Material.SKULL);
+        itemStack = new ItemStack(Material.SKULL_ITEM);
         skullMeta = SkullUtils.applySkin(itemStack.getItemMeta(), identifier);
     }
 
