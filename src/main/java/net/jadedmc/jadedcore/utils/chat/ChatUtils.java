@@ -27,6 +27,7 @@ package net.jadedmc.jadedcore.utils.chat;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
+import net.md_5.bungee.api.ChatColor;
 import org.bukkit.Bukkit;
 import org.bukkit.World;
 import org.bukkit.command.CommandSender;
@@ -80,6 +81,15 @@ public class ChatUtils {
      */
     public static Component translate(String message) {
         return MiniMessage.miniMessage().deserialize(replaceLegacy(message));
+    }
+
+    /**
+     * Translates a legacy message using ChatColor instead of components.
+     * @param message Message to translate.
+     * @return Translated message.
+     */
+    public static String translateLegacy(String message) {
+        return ChatColor.translateAlternateColorCodes('&', toLegacy(message));
     }
 
     /**
