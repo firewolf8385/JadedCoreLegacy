@@ -42,6 +42,9 @@ public final class JadedCorePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
+        // Set up JadedAPI
+        new JadedAPI(this);
+
         // Initialize an audiences instance for the plugin
         BukkitAudiences adventure = BukkitAudiences.create(this);
         ChatUtils.setAdventure(adventure);
