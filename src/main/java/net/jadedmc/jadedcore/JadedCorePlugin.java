@@ -26,6 +26,8 @@ package net.jadedmc.jadedcore;
 
 import net.jadedmc.jadedcore.features.achievements.AchievementManager;
 import net.jadedmc.jadedcore.features.player.JadedPlayerManager;
+import net.jadedmc.jadedcore.listeners.PlayerJoinListener;
+import net.jadedmc.jadedcore.listeners.PlayerQuitListener;
 import net.jadedmc.jadedcore.utils.chat.ChatUtils;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.plugin.java.JavaPlugin;
@@ -51,6 +53,13 @@ public final class JadedCorePlugin extends JavaPlugin {
 
         jadedPlayerManager = new JadedPlayerManager(this);
         achievementManager = new AchievementManager(this);
+
+        registerListeners();
+    }
+
+    private void registerListeners() {
+        getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
     }
 
     public AchievementManager achievementManager() {
