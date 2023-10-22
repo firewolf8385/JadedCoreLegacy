@@ -24,11 +24,15 @@
  */
 package net.jadedmc.jadedcore;
 
+import net.jadedmc.jadedcore.features.achievements.AchievementManager;
+import net.jadedmc.jadedcore.features.player.JadedPlayerManager;
 import net.jadedmc.jadedcore.utils.chat.ChatUtils;
 import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class JadedCorePlugin extends JavaPlugin {
+    private AchievementManager achievementManager;
+    private JadedPlayerManager jadedPlayerManager;
     private SettingsManager settingsManager;
     private MySQL mySQL;
 
@@ -44,6 +48,17 @@ public final class JadedCorePlugin extends JavaPlugin {
         // Connect to MySQL
         mySQL = new MySQL(this);
         mySQL.openConnection();
+
+        jadedPlayerManager = new JadedPlayerManager(this);
+        achievementManager = new AchievementManager(this);
+    }
+
+    public AchievementManager achievementManager() {
+        return achievementManager;
+    }
+
+    public JadedPlayerManager jadedPlayerManager() {
+        return jadedPlayerManager;
     }
 
     public MySQL mySQL() {
