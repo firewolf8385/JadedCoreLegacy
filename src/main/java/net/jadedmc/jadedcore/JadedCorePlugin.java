@@ -24,6 +24,8 @@
  */
 package net.jadedmc.jadedcore;
 
+import net.jadedmc.jadedcore.utils.chat.ChatUtils;
+import net.kyori.adventure.platform.bukkit.BukkitAudiences;
 import org.bukkit.plugin.java.JavaPlugin;
 
 public final class JadedCorePlugin extends JavaPlugin {
@@ -32,9 +34,14 @@ public final class JadedCorePlugin extends JavaPlugin {
 
     @Override
     public void onEnable() {
-        // Plugin startup logic
+        // Initialize an audiences instance for the plugin
+        BukkitAudiences adventure = BukkitAudiences.create(this);
+        ChatUtils.setAdventure(adventure);
+
+        // Load plugin settings.
         settingsManager = new SettingsManager(this);
 
+        // Connect to MySQL
         mySQL = new MySQL(this);
         mySQL.openConnection();
     }
