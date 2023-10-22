@@ -19,6 +19,11 @@ commands:
     description: Center yourself on a block.
     usage: /<command>
     permission: jadedcore.center
+  commandspy:
+    description: Spy on commands.
+    usage: /<command>
+    aliases: [ cmdspy ]
+    permission: jadedcore.commandspy
   discord:
     description: View the server discord.
     usage: /<command>

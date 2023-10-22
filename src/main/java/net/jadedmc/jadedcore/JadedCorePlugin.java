@@ -28,6 +28,7 @@ import net.jadedmc.jadedcore.command.AbstractCommand;
 import net.jadedmc.jadedcore.features.achievements.AchievementManager;
 import net.jadedmc.jadedcore.features.player.JadedPlayerManager;
 import net.jadedmc.jadedcore.listeners.ChannelMessageSendListener;
+import net.jadedmc.jadedcore.listeners.PlayerCommandPreprocessListener;
 import net.jadedmc.jadedcore.listeners.PlayerJoinListener;
 import net.jadedmc.jadedcore.listeners.PlayerQuitListener;
 import net.jadedmc.jadedcore.utils.chat.ChatUtils;
@@ -69,6 +70,7 @@ public final class JadedCorePlugin extends JavaPlugin {
     private void registerListeners() {
         getServer().getPluginManager().registerEvents(new GUIListeners(), this);
         getServer().getPluginManager().registerEvents(new ChannelMessageSendListener(this), this);
+        getServer().getPluginManager().registerEvents(new PlayerCommandPreprocessListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerJoinListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
     }

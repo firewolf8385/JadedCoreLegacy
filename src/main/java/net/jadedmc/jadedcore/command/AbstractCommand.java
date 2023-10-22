@@ -61,6 +61,7 @@ public abstract class AbstractCommand implements CommandExecutor {
         new APICMD(pl);
         new BroadcastCMD();
         new CenterCMD();
+        new CommandSpyCMD(pl);
         new DiscordCMD();
         new ECSeeCMD();
         new EnderchestCMD();
