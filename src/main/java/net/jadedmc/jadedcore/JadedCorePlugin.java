@@ -24,6 +24,7 @@
  */
 package net.jadedmc.jadedcore;
 
+import net.jadedmc.jadedcore.command.AbstractCommand;
 import net.jadedmc.jadedcore.features.achievements.AchievementManager;
 import net.jadedmc.jadedcore.features.player.JadedPlayerManager;
 import net.jadedmc.jadedcore.listeners.PlayerJoinListener;
@@ -55,6 +56,7 @@ public final class JadedCorePlugin extends JavaPlugin {
         jadedPlayerManager = new JadedPlayerManager(this);
         achievementManager = new AchievementManager(this);
 
+        AbstractCommand.registerCommands(this);
         registerListeners();
     }
 

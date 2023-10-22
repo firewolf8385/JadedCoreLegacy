@@ -3,3 +3,57 @@ version: '${project.version}-Legacy'
 main: net.jadedmc.jadedcore.JadedCorePlugin
 depend:
   - LuckPerms
+
+commands:
+  api:
+    description: Runs the api key command.
+    usage: /api
+  broadcast:
+    description: Broadcast command.
+    usage: /broadcast
+    aliases: [ bc ]
+    permission: jadedcore.broadcast
+  center:
+    description: Center yourself on a block.
+    usage: /<command>
+    permission: jadedcore.center
+  discord:
+    description: View the server discord.
+    usage: /<command>
+  ecsee:
+    description: View someone's enderchest.
+    usage: /<command>
+    permission: jadedcore.ecsee
+  enderchest:
+    description: View your own enderchest.
+    usage: /<command>
+    aliases: [ ec ]
+    permission: jadedcore.enderchest
+  feed:
+    description: Fill a player's hunger and saturation bars.
+    usage: /<command>
+    permission: jadedcore.feed
+  heal:
+    description: Heals a player
+    usage: /<command>
+    permission: jadedcore.heal
+  invsee:
+    description: View a player's inventory.
+    usage: /<command>
+    permission: jadedcore.invsee
+  rename:
+    description: Rename an item in the player's hand.
+    usage: /<command>
+    permission: jadedcore.rename
+  rules:
+    description: View the server rules.
+    usage: /<rules>
+  uuid:
+    description: View a player's uuid.
+    usage: /<command>
+    permission: jadedcore.uuid
+  workbench:
+    description: Opens a crafting table.
+    usage: /<command>
+    aliases: [ wb,craft ]
+    permission: jadedcore.workbench
