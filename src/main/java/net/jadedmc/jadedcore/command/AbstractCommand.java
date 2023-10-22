@@ -68,6 +68,7 @@ public abstract class AbstractCommand implements CommandExecutor {
         new GamesCMD();
         new HealCMD();
         new InvSeeCMD();
+        new ProfileCMD(pl);
         new RenameCMD();
         new RulesCMD();
         new UUIDCMD();
