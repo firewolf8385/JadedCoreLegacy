@@ -3,6 +3,7 @@ version: '${project.version}-Legacy'
 main: net.jadedmc.jadedcore.JadedCorePlugin
 depend:
   - LuckPerms
+  - PlaceholderAPI
 
 commands:
   api:
