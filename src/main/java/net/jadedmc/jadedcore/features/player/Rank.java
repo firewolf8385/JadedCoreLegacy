@@ -28,16 +28,17 @@ package net.jadedmc.jadedcore.features.player;
  * Represents a rank in the server.
  */
 public enum Rank {
-    OWNER("owner", 10, "<red><bold>Owner</bold></red>", "<red>"),
-    ADMIN("admin", 9, "<red><bold>Admin</bold></red>", "<red>"),
-    MOD("mod", 8, "<gold><bold>Mod</bold></gold>", "<gold>"),
-    TRIAL("trial", 7, "<gold><bold>Trial</bold></gold>", "<gold>"),
-    BUILDER("builder", 6, "<yellow><bold>Builder</bold></yellow>", "<yellow>"),
-    DEVELOPER("developer", 5, "<yellow><bold>Developer</bold></yellow>", "<yellow>"),
-    YOUTUBE("youtube", 4, "<bold><red>You</red><white>Tube</white></bold>", "<gray>"),
-    JADED("jaded", 3, "<green><bold>Jaded</bold></green>", "<gray>"),
-    SAPPHIRE("sapphire", 2, "<blue><bold>Sapphire</bold></blue>", "<gray>"),
-    AMETHYST("amethyst", 1, "<dark_purple><bold>Amethyst</bold></dark_purple>", "<gray>"),
+    OWNER("owner", 11, "<red><bold>Owner</bold></red>", "<red>"),
+    ADMIN("admin", 10, "<red><bold>Admin</bold></red>", "<red>"),
+    MOD("mod", 9, "<gold><bold>Mod</bold></gold>", "<gold>"),
+    TRIAL("trial", 8, "<gold><bold>Trial</bold></gold>", "<gold>"),
+    BUILDER("builder", 7, "<yellow><bold>Builder</bold></yellow>", "<yellow>"),
+    DEVELOPER("developer", 6, "<yellow><bold>Developer</bold></yellow>", "<yellow>"),
+    YOUTUBE("youtube", 5, "<bold><red>You</red><white>Tube</white></bold>", "<gray>"),
+    JADED("jaded", 4, "<green><bold>Jaded</bold></green>", "<gray>"),
+    SAPPHIRE("sapphire", 3, "<blue><bold>Sapphire</bold></blue>", "<gray>"),
+    AMETHYST("amethyst", 2, "<dark_purple><bold>Amethyst</bold></dark_purple>", "<gray>"),
+    GARNET("garnet", 1, "<light_purple><bold>Garnet</bold></light_purple>", "<gray>"),
     DEFAULT("default", 0, "<gray>Default</gray>", "<gray>");
 
     private final String name;
