@@ -31,6 +31,9 @@ import org.bukkit.inventory.ItemStack;
 public enum CustomItem {
     GAME_SELECTOR(new ItemBuilder(XMaterial.COMPASS)
             .setDisplayName("&a&lGames")
+            .build()),
+    PROFILE(new ItemBuilder(XMaterial.PLAYER_HEAD)
+            .setDisplayName("<green><bold>Profile")
             .build());
 
     private final ItemStack itemStack;
