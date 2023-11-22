@@ -72,6 +72,7 @@ public abstract class AbstractCommand implements CommandExecutor {
         new ProfileCMD(pl);
         new RenameCMD();
         new RulesCMD();
+        new StoreCMD();
         new UUIDCMD();
         new WorkbenchCMD();
     }

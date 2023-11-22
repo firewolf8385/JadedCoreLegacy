@@ -61,6 +61,9 @@ commands:
   rules:
     description: View the server rules.
     usage: /<rules>
+  store:
+    description: View the server store.
+    usage: /<command>
   uuid:
     description: View a player's uuid.
     usage: /<command>
