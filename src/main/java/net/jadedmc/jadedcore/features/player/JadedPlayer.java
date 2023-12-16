@@ -44,7 +44,7 @@ import java.util.Collection;
 public class JadedPlayer {
     private final JadedCorePlugin plugin;
     private final Player player;
-    private final Rank rank;
+    private Rank rank;
 
     private boolean spying = false;
     private boolean vanished = false;
@@ -65,38 +65,25 @@ public class JadedPlayer {
         // Update the player's rank.
         this.rank = Rank.fromName(LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId()).getPrimaryGroup());
 
+        // Player Info
         try {
+            PreparedStatement statement = plugin.mySQL().getConnection().prepareStatement("SELECT * FROM player_info where uuid = ? LIMIT 1");
+            statement.setString(1, player.getUniqueId().toString());
+            ResultSet resultSet = statement.executeQuery();
 
-            // Player Info
-            {
-                PreparedStatement statement = plugin.mySQL().getConnection().prepareStatement("SELECT * FROM player_info where uuid = ? LIMIT 1");
-                statement.setString(1, player.getUniqueId().toString());
-                ResultSet resultSet = statement.executeQuery();
-
-                if(resultSet.next()) {
-                    level = resultSet.getInt("level");
-                    experience = resultSet.getInt("experience");
-                    firstJoined = resultSet.getTimestamp("firstOnline");
-                }
+            if(resultSet.next()) {
+                level = resultSet.getInt("level");
+                experience = resultSet.getInt("experience");
+                firstJoined = resultSet.getTimestamp("firstOnline");
             }
+        }
+        catch (SQLException exception) {
+            exception.printStackTrace();
+        }
 
-            // Achievements
-            {
-                PreparedStatement statement = plugin.mySQL().getConnection().prepareStatement("SELECT * FROM player_achievements WHERE uuid = ?");
-                statement.setString(1, player.getUniqueId().toString());
-                ResultSet resultSet = statement.executeQuery();
-
-                while(resultSet.next()) {
-                    Achievement achievement = plugin.achievementManager().getAchievement(resultSet.getString("achievementID"));
-
-                    if(achievement != null) {
-                        achievements.add(achievement);
-                    }
-                }
-            }
-
-            // Staff Settings
-            {
+        // Staff settings.
+        if(rank.isStaffRank()) {
+            try {
                 PreparedStatement statement = plugin.mySQL().getConnection().prepareStatement("SELECT * FROM staff_settings WHERE uuid = ? LIMIT 1");
                 statement.setString(1, player.getUniqueId().toString());
                 ResultSet results = statement.executeQuery();
@@ -114,11 +101,28 @@ public class JadedPlayer {
                     vanished = false;
                 }
             }
+            catch (SQLException exception) {
+                exception.printStackTrace();
+            }
+        }
+
+        // Achievements
+        try {
+            PreparedStatement statement = plugin.mySQL().getConnection().prepareStatement("SELECT * FROM player_achievements WHERE uuid = ?");
+            statement.setString(1, player.getUniqueId().toString());
+            ResultSet resultSet = statement.executeQuery();
+
+            while(resultSet.next()) {
+                Achievement achievement = plugin.achievementManager().getAchievement(resultSet.getString("achievementID"));
+
+                if(achievement != null) {
+                    achievements.add(achievement);
+                }
+            }
         }
         catch (SQLException exception) {
             exception.printStackTrace();
         }
-
     }
 
     public Collection<Achievement> getAchievements() {
@@ -243,6 +247,16 @@ public class JadedPlayer {
             } catch (SQLException exception) {
                 exception.printStackTrace();
             }
+        });
+    }
+
+    /**
+     * Update the player's current rank.
+     */
+    public void updateRank() {
+        plugin.getServer().getScheduler().runTaskAsynchronously(plugin, () -> {
+            // Update the player's rank.
+            this.rank = Rank.fromName(LuckPermsProvider.get().getUserManager().getUser(player.getUniqueId()).getPrimaryGroup());
         });
     }
 }

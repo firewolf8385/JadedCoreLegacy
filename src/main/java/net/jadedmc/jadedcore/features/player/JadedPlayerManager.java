@@ -25,11 +25,13 @@
 package net.jadedmc.jadedcore.features.player;
 
 import net.jadedmc.jadedcore.JadedCorePlugin;
+import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.UUID;
 import java.util.concurrent.CompletableFuture;
 
 /**
@@ -67,6 +69,15 @@ public class JadedPlayerManager {
      */
     public JadedPlayer getPlayer(Player player) {
         return jadedPlayers.get(player);
+    }
+
+    /**
+     * Get a JadedPlayer from a UUID.
+     * @param uuid UUID of the player.
+     * @return JadedPlayer of the player.
+     */
+    public JadedPlayer getPlayer(UUID uuid) {
+        return this.getPlayer(Bukkit.getPlayer(uuid));
     }
 
     /**
