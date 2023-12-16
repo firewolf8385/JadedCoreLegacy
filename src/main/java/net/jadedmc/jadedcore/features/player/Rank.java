@@ -28,21 +28,22 @@ package net.jadedmc.jadedcore.features.player;
  * Represents a rank in the server.
  */
 public enum Rank {
-    OWNER("owner", 11, "<red><bold>Owner</bold></red>", "<red>"),
-    ADMIN("admin", 10, "<red><bold>Admin</bold></red>", "<red>"),
-    MOD("mod", 9, "<gold><bold>Mod</bold></gold>", "<gold>"),
-    TRIAL("trial", 8, "<gold><bold>Trial</bold></gold>", "<gold>"),
-    BUILDER("builder", 7, "<yellow><bold>Builder</bold></yellow>", "<yellow>"),
-    DEVELOPER("developer", 6, "<yellow><bold>Developer</bold></yellow>", "<yellow>"),
-    YOUTUBE("youtube", 5, "<bold><red>You</red><white>Tube</white></bold>", "<gray>"),
-    JADED("jaded", 4, "<green><bold>Jaded</bold></green>", "<gray>"),
-    SAPPHIRE("sapphire", 3, "<blue><bold>Sapphire</bold></blue>", "<gray>"),
-    AMETHYST("amethyst", 2, "<dark_purple><bold>Amethyst</bold></dark_purple>", "<gray>"),
-    GARNET("garnet", 1, "<light_purple><bold>Garnet</bold></light_purple>", "<gray>"),
-    DEFAULT("default", 0, "<gray>Default</gray>", "<gray>");
+    OWNER("owner", 11, "<red><bold>Owner</bold></red>", "<red>", "<red>"),
+    ADMIN("admin", 10, "<red><bold>Admin</bold></red>", "<red>", "<red>"),
+    MOD("mod", 9, "<gold><bold>Mod</bold></gold>", "<gold>", "<gold>"),
+    TRIAL("trial", 8, "<gold><bold>Trial</bold></gold>", "<gold>", "<gold>"),
+    BUILDER("builder", 7, "<yellow><bold>Builder</bold></yellow>", "<yellow>", "<yellow>"),
+    DEVELOPER("developer", 6, "<yellow><bold>Developer</bold></yellow>", "<yellow>", "<yellow>"),
+    YOUTUBE("youtube", 5, "<bold><red>You</red><white>Tube</white></bold>", "<white>", "<white>"),
+    JADED("jaded", 4, "<green><bold>Jaded</bold></green>", "<gray>", "<green>"),
+    SAPPHIRE("sapphire", 3, "<blue><bold>Sapphire</bold></blue>", "<gray>", "<blue>"),
+    AMETHYST("amethyst", 2, "<dark_purple><bold>Amethyst</bold></dark_purple>", "<gray>", "<dark_purple>"),
+    GARNET("garnet", 1, "<light_purple><bold>Garnet</bold></light_purple>", "<gray>", "<light_purple>"),
+    DEFAULT("default", 0, "<gray>Default</gray>", "<gray>", "<gray>");
 
     private final String name;
     private final String displayName;
+    private final String chatColor;
     private final String rankColor;
     private final int weight;
 
@@ -51,12 +52,13 @@ public enum Rank {
      * @param name Name of the rank.
      * @param weight Weight of the rank.
      * @param displayName Display name of the rank.
-     * @param rankColor Chat color of the rank.
+     * @param chatColor Chat color of the rank.
      */
-    Rank(final String name, final int weight, final String displayName, final String rankColor) {
+    Rank(final String name, final int weight, final String displayName, final String chatColor, final String rankColor) {
         this.name = name;
         this.weight = weight;
         this.displayName = displayName;
+        this.chatColor = chatColor;
         this.rankColor = rankColor;
     }
 
@@ -70,11 +72,11 @@ public enum Rank {
     }
 
     /**
-     * Gets the rank's color.
-     * @return Color of the rank.
+     * Gets the rank's chat color.
+     * @return Chat color of the rank.
      */
-    public String getRankColor() {
-        return rankColor;
+    public String getChatColor() {
+        return chatColor;
     }
 
     /**
@@ -103,6 +105,14 @@ public enum Rank {
      */
     public String getName() {
         return name;
+    }
+
+    /**
+     * Gets the color of the rank.
+     * @return Rank's color.
+     */
+    public String getRankColor() {
+        return rankColor;
     }
 
     /**
