@@ -64,6 +64,7 @@ commands:
   store:
     description: View the server store.
     usage: /<command>
+    aliases: [shop]
   uuid:
     description: View a player's uuid.
     usage: /<command>
