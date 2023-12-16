@@ -25,6 +25,8 @@
 package net.jadedmc.jadedcore.listeners;
 
 import net.jadedmc.jadedcore.JadedCorePlugin;
+import net.jadedmc.jadedcore.utils.chat.ChatUtils;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerQuitEvent;
@@ -33,14 +35,14 @@ import org.bukkit.event.player.PlayerQuitEvent;
  * Listens to the PlayerQuitEvent, which is called when a player quits.
  * Used to remove references to the player object when the player leaves.
  */
-public class PlayerQuitListener  implements Listener {
+public class PlayerQuitListener implements Listener {
     private final JadedCorePlugin plugin;
 
     /**
      * Creates the Listener.
      * @param plugin Instance of the plugin.
      */
-    public PlayerQuitListener(final JadedCorePlugin plugin) {
+    public PlayerQuitListener(JadedCorePlugin plugin) {
         this.plugin = plugin;
     }
 
@@ -50,7 +52,11 @@ public class PlayerQuitListener  implements Listener {
      */
     @EventHandler
     public void onQuit(PlayerQuitEvent event) {
-        // Remove JadedPlayer from cache.
-        plugin.jadedPlayerManager().removePlayer(event.getPlayer());
+        Player player = event.getPlayer();
+
+        event.setQuitMessage(null);
+        ChatUtils.broadcast(player.getWorld(),"&8[&c-&8] &c" + player.getName());
+
+        plugin.jadedPlayerManager().removePlayer(player);
     }
 }
