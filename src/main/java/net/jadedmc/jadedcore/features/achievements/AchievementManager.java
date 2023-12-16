@@ -53,6 +53,9 @@ public class AchievementManager {
         createAchievement(Game.GENERAL, "general_1", "A Whole New World", "Join the server for the first time.", 5);
         createAchievement(Game.GENERAL, "general_4", "Better With Friends", "Create or join a party with other players.", 5);
         createAchievement(Game.GENERAL, "general_2", "Let My Voice Be Heard!", "Use chat for the first time.", 5);
+        createAchievement(Game.GENERAL, "general_5", "Veteran", "Be on the server for at least a year.", 5);
+
+        loadAchievements();
     }
 
     /**
@@ -65,6 +68,10 @@ public class AchievementManager {
                 ResultSet resultSet = statement.executeQuery();
 
                 while(resultSet.next()) {
+                    if(achievements.containsKey(resultSet.getString("id"))) {
+                        continue;
+                    }
+
                     achievements.put(resultSet.getString("id"), new Achievement(plugin, Game.valueOf(resultSet.getString("mode")), resultSet.getString("id"), resultSet.getString("name"), resultSet.getString("description"), resultSet.getInt("achievementPoints"), resultSet.getString("rewards")));
                 }
             }
