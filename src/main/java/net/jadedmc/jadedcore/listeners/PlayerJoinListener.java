@@ -25,6 +25,7 @@
 package net.jadedmc.jadedcore.listeners;
 
 import net.jadedmc.jadedcore.JadedCorePlugin;
+import net.jadedmc.jadedcore.utils.chat.ChatUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -51,10 +52,18 @@ public class PlayerJoinListener implements Listener {
      */
     @EventHandler
     public void onJoin(PlayerJoinEvent event) {
+        event.setJoinMessage(null);
         Player player = event.getPlayer();
 
         // Loads the JadedPlayer object of the player.
         plugin.jadedPlayerManager().addPlayer(player).thenAccept(jadedPlayer -> {
+            // Join Message
+            switch (jadedPlayer.getRank()) {
+                case AMETHYST -> ChatUtils.broadcast(player.getWorld(), "&5>&f>&5> &lAmethyst &7" + player.getName() + " &ahas joined the lobby! &5<&f<&5<");
+                case SAPPHIRE -> ChatUtils.broadcast(player.getWorld(), "&9>&f>&9> &lSapphire &7" + player.getName() + " &ahas joined the lobby! &9<&f<&9<");
+                case JADED -> ChatUtils.broadcast(player.getWorld(), "&a>&f>&a> &lJaded &7" + player.getName() + " &ahas joined the lobby! &a<&f<&a<");
+                default -> ChatUtils.broadcast(player.getWorld(), "&8[&a+&8] &a" + player.getName());
+            }
 
             // Unlock the join achievement.
             plugin.achievementManager().getAchievement("general_1").unlock(player);
