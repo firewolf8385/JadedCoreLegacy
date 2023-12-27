@@ -120,6 +120,14 @@ public class JadedPlayer {
                     achievements.add(achievement);
                 }
             }
+
+            int achievementPoints = getAchievementPoints();
+            if(achievementPoints > 0) {
+                PreparedStatement updateStatement = plugin.mySQL().getConnection().prepareStatement("UPDATE player_info SET achievementPoints = ? WHERE uuid = ?");
+                updateStatement.setInt(1, achievementPoints);
+                updateStatement.setString(2, player.getUniqueId().toString());
+                updateStatement.executeUpdate();
+            }
         }
         catch (SQLException exception) {
             exception.printStackTrace();
@@ -128,6 +136,15 @@ public class JadedPlayer {
 
     public Collection<Achievement> getAchievements() {
         return achievements;
+    }
+
+    public int getAchievementPoints() {
+        int achievementPoints = 0;
+        for(Achievement achievement : achievements) {
+            achievementPoints += achievement.getPoints();
+        }
+
+        return achievementPoints;
     }
 
     public int getExperience() {
