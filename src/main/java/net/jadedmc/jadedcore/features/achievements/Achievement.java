@@ -122,13 +122,14 @@ public class Achievement {
     /**
      * Unlocks the achievement for a player.
      * @param player Player to unlock achievement for.
+     * @return Whether the achievement was unlocked.
      */
-    public void unlock(Player player) {
+    public boolean unlock(Player player) {
         JadedPlayer jadedPlayer = plugin.jadedPlayerManager().getPlayer(player);
 
         // Exit if they already have the achievement.
         if(jadedPlayer.getAchievements().contains(this)) {
-            return;
+            return false;
         }
 
         jadedPlayer.getAchievements().add(this);
@@ -155,5 +156,7 @@ public class Achievement {
                 exception.printStackTrace();
             }
         });
+
+        return true;
     }
 }
