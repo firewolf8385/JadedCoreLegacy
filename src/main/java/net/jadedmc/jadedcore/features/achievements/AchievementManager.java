@@ -30,10 +30,7 @@ import net.jadedmc.jadedcore.features.games.Game;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * Manages the creation and access of Achievements.
@@ -149,5 +146,27 @@ public class AchievementManager {
         }
 
         return null;
+    }
+
+    public List<Achievement> getSortedAchievements(Game game) {
+        List<Achievement> gameAchievements = getAchievements(game);
+        List<String> sorted_names = new ArrayList<>();
+        List<Achievement> sortedAchievements = new ArrayList<>();
+
+        for(Achievement achievement : gameAchievements) {
+            sorted_names.add(achievement.getName());
+        }
+
+        sorted_names.sort(Comparator.naturalOrder());
+
+        for(String name : sorted_names) {
+            for(Achievement achievement : gameAchievements) {
+                if(achievement.getName().equals(name)) {
+                    sortedAchievements.add(achievement);
+                }
+            }
+        }
+
+        return sortedAchievements;
     }
 }
