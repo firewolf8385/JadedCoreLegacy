@@ -25,6 +25,7 @@
 package net.jadedmc.jadedcore.listeners;
 
 import net.jadedmc.jadedcore.JadedCorePlugin;
+import net.jadedmc.jadedcore.events.JadedJoinEvent;
 import net.jadedmc.jadedcore.utils.chat.ChatUtils;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
@@ -67,6 +68,11 @@ public class PlayerJoinListener implements Listener {
 
             // Unlock the join achievement.
             plugin.achievementManager().getAchievement("general_1").unlock(player);
+
+            // Run the JadedJoinEvent
+            plugin.getServer().getScheduler().runTask(plugin, () -> {
+                plugin.getServer().getPluginManager().callEvent(new JadedJoinEvent(jadedPlayer));
+            });
         });
     }
 }
