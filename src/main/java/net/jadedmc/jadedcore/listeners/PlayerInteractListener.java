@@ -72,8 +72,14 @@ public class PlayerInteractListener implements Listener {
         Player player = event.getPlayer();
 
         switch (item) {
-            case "Games" -> new GamesGUI().open(player);
-            case "Profile" -> new ProfileGUI(plugin, player).open(player);
+            case "Games" -> {
+                new GamesGUI().open(player);
+                event.setCancelled(true);
+            }
+            case "Profile" -> {
+                new ProfileGUI(plugin, player).open(player);
+                event.setCancelled(true);
+            }
         }
     }
 }
