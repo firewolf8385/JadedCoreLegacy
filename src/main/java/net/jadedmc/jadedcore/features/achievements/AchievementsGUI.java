@@ -34,6 +34,7 @@ import net.jadedmc.jadedcore.utils.items.ItemBuilder;
 import net.jadedmc.jadedcore.utils.items.SkullBuilder;
 import org.bukkit.Material;
 import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 
 import java.util.ArrayList;
@@ -95,6 +96,7 @@ public class AchievementsGUI extends CustomGUI {
                     .addLore("<gray>Points: <yellow>" + playerPoints + "<gray>/<yellow>" + totalPoints + " <dark_gray>(" + MathUtils.percent(playerPoints, totalPoints) + "%)")
                     .addLore("")
                     .addLore("&aClick to view achievements!")
+                    .addFlag(ItemFlag.HIDE_ATTRIBUTES)
                     .build();
             setItem(gameSlots[i], item, (p,a) -> new AchievementsGUI(plugin, p, game).open(p));
             i++;
