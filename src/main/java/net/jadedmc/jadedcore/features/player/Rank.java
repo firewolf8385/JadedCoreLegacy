@@ -63,6 +63,22 @@ public enum Rank {
     }
 
     /**
+     * Check if a rank exists.
+     * @param name Rank name to check.
+     * @return Whether it exists.
+     */
+    public static boolean exists(String name) {
+
+        for(Rank rank : values()) {
+            if(rank.getName().equalsIgnoreCase(name)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    /**
      * Get a rank from its name.
      * @param name Name of the rank.
      * @return Resulting rank.

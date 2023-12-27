@@ -36,6 +36,7 @@ import org.bukkit.plugin.java.JavaPlugin;
 
 public final class JadedCorePlugin extends JavaPlugin {
     private AchievementManager achievementManager;
+    private HookManager hookManager;
     private JadedPlayerManager jadedPlayerManager;
     private SettingsManager settingsManager;
     private MySQL mySQL;
@@ -58,6 +59,7 @@ public final class JadedCorePlugin extends JavaPlugin {
 
         jadedPlayerManager = new JadedPlayerManager(this);
         achievementManager = new AchievementManager(this);
+        hookManager = new HookManager(this);
 
         AbstractCommand.registerCommands(this);
         registerListeners();
@@ -80,6 +82,10 @@ public final class JadedCorePlugin extends JavaPlugin {
 
     public AchievementManager achievementManager() {
         return achievementManager;
+    }
+
+    public HookManager hookManager() {
+        return hookManager;
     }
 
     public JadedPlayerManager jadedPlayerManager() {

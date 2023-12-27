@@ -6,6 +6,9 @@ depend:
   - PlaceholderAPI
   - JadedChat
 
+softdepend:
+  - HyNick
+
 commands:
   api:
     description: Runs the api key command.

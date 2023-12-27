@@ -24,6 +24,7 @@
  */
 package net.jadedmc.jadedcore.features.player;
 
+import me.clip.placeholderapi.PlaceholderAPI;
 import net.jadedmc.jadedcore.JadedCorePlugin;
 import net.jadedmc.jadedcore.features.achievements.Achievement;
 import net.luckperms.api.LuckPermsProvider;
@@ -142,6 +143,19 @@ public class JadedPlayer {
     }
 
     /**
+     * Get the player's displayed username.
+     * Works with Nicks if enabled.
+     * @return The username that should be displayed.
+     */
+    public String getName() {
+        if(plugin.hookManager().useHyNick()) {
+            return PlaceholderAPI.setPlaceholders(player, "%hynick_name%");
+        }
+
+        return player.getName();
+    }
+
+    /**
      * Get the player data is being stored for.
      * @return Player of the JadedPlayer.
      */
@@ -154,7 +168,25 @@ public class JadedPlayer {
      * @return Player's rank.
      */
     public Rank getRank() {
+        if(plugin.hookManager().useHyNick()) {
+            String rankString = PlaceholderAPI.setPlaceholders(player, "%hynick_rank%").toUpperCase();
+
+            if(!Rank.exists(rankString)) {
+                return rank;
+            }
+
+            return Rank.valueOf(rankString);
+        }
+
         return rank;
+    }
+
+    /**
+     * Get the player's real name.
+     * @return Player's real username.
+     */
+    public String getRealName() {
+        return player.getName();
     }
 
     /**

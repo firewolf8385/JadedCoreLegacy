@@ -60,10 +60,10 @@ public class PlayerJoinListener implements Listener {
         plugin.jadedPlayerManager().addPlayer(player).thenAccept(jadedPlayer -> {
             // Join Message
             switch (jadedPlayer.getRank()) {
-                case AMETHYST -> ChatUtils.broadcast(player.getWorld(), "&5>&f>&5> &lAmethyst &7" + player.getName() + " &ahas joined the lobby! &5<&f<&5<");
-                case SAPPHIRE -> ChatUtils.broadcast(player.getWorld(), "&9>&f>&9> &lSapphire &7" + player.getName() + " &ahas joined the lobby! &9<&f<&9<");
-                case JADED -> ChatUtils.broadcast(player.getWorld(), "&a>&f>&a> &lJaded &7" + player.getName() + " &ahas joined the lobby! &a<&f<&a<");
-                default -> ChatUtils.broadcast(player.getWorld(), "&8[&a+&8] &a" + player.getName());
+                case AMETHYST -> ChatUtils.broadcast(player.getWorld(), "&5>&f>&5> &lAmethyst &7" + jadedPlayer.getName() + " &ahas joined the lobby! &5<&f<&5<");
+                case SAPPHIRE -> ChatUtils.broadcast(player.getWorld(), "&9>&f>&9> &lSapphire &7" + jadedPlayer.getName() + " &ahas joined the lobby! &9<&f<&9<");
+                case JADED -> ChatUtils.broadcast(player.getWorld(), "&a>&f>&a> &lJaded &7" + jadedPlayer.getName() + " &ahas joined the lobby! &a<&f<&a<");
+                default -> ChatUtils.broadcast(player.getWorld(), "&8[&a+&8] &a" + jadedPlayer.getName());
             }
 
             // Unlock the join achievement.
