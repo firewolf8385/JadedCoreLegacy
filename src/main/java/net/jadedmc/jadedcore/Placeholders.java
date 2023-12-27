@@ -6,6 +6,8 @@ import net.jadedmc.jadedcore.utils.chat.ChatUtils;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
+
 /**
  * This class will be registered through the register-method in the
  * plugins onEnable-method.
@@ -89,6 +91,28 @@ class Placeholders extends PlaceholderExpansion {
 
     @Override
     public String onPlaceholderRequest(Player player, String identifier) {
+        // Overall
+        if(identifier.contains("top_ap_name")) {
+            int place = Integer.parseInt(identifier.replaceAll("\\D+","")) - 1;
+            ArrayList<String> temp = new ArrayList<>(plugin.leaderboardManager().getAchievementPointsLeaderboard().keySet());
+            if(temp.size() < place + 1) {
+                return "---";
+            }
+
+            return temp.get(place);
+        }
+
+        if(identifier.contains("top_ap_value")) {
+            int place = Integer.parseInt(identifier.replaceAll("\\D+","")) - 1;
+            ArrayList<Integer> temp = new ArrayList<>(plugin.leaderboardManager().getAchievementPointsLeaderboard().values());
+
+            if(temp.size() < place + 1) {
+                return "---";
+            }
+
+            return temp.get(place) + "";
+        }
+
         JadedPlayer jadedPlayer = plugin.jadedPlayerManager().getPlayer(player);
 
         if(jadedPlayer == null) {
