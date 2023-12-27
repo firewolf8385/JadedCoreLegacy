@@ -69,6 +69,11 @@ public class PlayerJoinListener implements Listener {
             // Unlock the join achievement.
             plugin.achievementManager().getAchievement("general_1").unlock(player);
 
+            // Give the "Veteran" achievement.
+            if(System.currentTimeMillis() - jadedPlayer.getFirstJoined().getTime() > Long.parseLong("31556952000")) {
+                plugin.achievementManager().getAchievement("general_5").unlock(player);
+            }
+
             // Run the JadedJoinEvent
             plugin.getServer().getScheduler().runTask(plugin, () -> {
                 plugin.getServer().getPluginManager().callEvent(new JadedJoinEvent(jadedPlayer));
