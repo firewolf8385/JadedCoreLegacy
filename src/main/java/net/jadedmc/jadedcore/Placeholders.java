@@ -91,6 +91,10 @@ class Placeholders extends PlaceholderExpansion {
     public String onPlaceholderRequest(Player player, String identifier) {
         JadedPlayer jadedPlayer = plugin.jadedPlayerManager().getPlayer(player);
 
+        if(jadedPlayer == null) {
+            return "";
+        }
+
         if(identifier.contains("rank_displayname_legacy")) {
             return ChatUtils.toLegacy(jadedPlayer.getRank().getDisplayName());
         }
