@@ -35,7 +35,11 @@ public enum Game {
     CACTUS_RUSH("Cactus Rush", XMaterial.CACTUS, GameType.COMPETITIVE, "Team-Based Cactus Fighting Minigame.", "cactusrush"),
     HOUSING("Housing", XMaterial.DARK_OAK_DOOR, GameType.PERSISTENT, "Create in your own mini-world, or visit someone else's!", "housing"),
     LOBBY("Main Lobby", XMaterial.CRAFTING_TABLE, GameType.NONE, "", "lobby"),
-    GENERAL("General", XMaterial.BOOK, GameType.NONE, "", "");
+    GENERAL("General", XMaterial.BOOK, GameType.NONE, "", ""),
+    DUELS("Duels", XMaterial.IRON_SWORD, GameType.COMPETITIVE, "Arena-Based PvP duels and tournaments!", ""),
+    MODERN_DUELS("1.20 Duels", XMaterial.DIAMOND_SWORD, GameType.COMPETITIVE, "Arena-Based pvp duels and tournaments for modern minecraft.", "modernduels"),
+    LEGACY_DUELS("1.8 Duels", XMaterial.GOLDEN_SWORD, GameType.COMPETITIVE, "", "legacyduels"),
+    TOURNAMENTS("1.8 Tournaments", XMaterial.GOLD_INGOT, GameType.COMPETITIVE, "Automated 1.8 PvP Tournaments, hosted by staff!", "tournament");
 
     private final String name;
     private final XMaterial iconMaterial;

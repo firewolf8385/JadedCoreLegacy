@@ -31,6 +31,7 @@ import net.jadedmc.jadedcore.utils.chat.ChatUtils;
 import net.jadedmc.jadedcore.utils.gui.CustomGUI;
 import net.jadedmc.jadedcore.utils.items.ItemBuilder;
 import org.bukkit.Bukkit;
+import org.bukkit.inventory.ItemFlag;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.ChatPaginator;
 
@@ -44,10 +45,28 @@ public class GamesGUI extends CustomGUI {
 
         addFiller(0,1,2,3,4,5,6,7,8,45,46,47,48,49,50,51,52,53);
 
-        addGame(20, Game.ELYTRAPVP);
-        addGame(22, Game.CACTUS_RUSH);
-        addGame(24, Game.HOUSING);
-        addGame(40, Game.LOBBY);
+        addGame(20, Game.CACTUS_RUSH);
+        addGame(21, Game.ELYTRAPVP);
+        addGame(23, Game.TURFWARS);
+        //addGame(24, Game.HOUSING);
+        addGame(31, Game.LOBBY);
+
+        ItemStack comingSoon = new ItemBuilder(XMaterial.GRAY_DYE.parseItem())
+                .setDisplayName("&c&lComing Soon")
+                .build();
+
+        setItem(24, comingSoon);
+
+        ItemStack duels = new ItemBuilder(XMaterial.IRON_SWORD)
+                .setDisplayName("&a&lDuels")
+                .addLore("")
+                .addLore(ChatPaginator.wordWrap(Game.DUELS.getDescription(), 25), "&7")
+                .addLore("")
+                .addLore("&a▸ Click to Connect")
+                .addLore(ChatUtils.translateLegacy(PlaceholderAPI.setPlaceholders(Bukkit.getOnlinePlayers().iterator().next(), "&7Join %math_0_{bungee_modernduels}+{bungee_legacyduels}+{bungee_tournament}% others playing!")))
+                .addFlag(ItemFlag.HIDE_ATTRIBUTES)
+                .build();
+        setItem(22, duels, (p, a) -> new DuelsGUI().open(p));
     }
 
     /**
@@ -86,5 +105,4 @@ public class GamesGUI extends CustomGUI {
                 .addLore(ChatUtils.translateLegacy(PlaceholderAPI.setPlaceholders(Bukkit.getOnlinePlayers().iterator().next(), "&7Join %bungee_" + game.getServer() + "% others playing!")));
         return builder.build();
     }
-
 }
