@@ -22,7 +22,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package net.jadedmc.jadedcore.utils;
+package net.jadedmc.jadedutils;
 
 import org.bukkit.Location;
 import org.bukkit.util.Vector;

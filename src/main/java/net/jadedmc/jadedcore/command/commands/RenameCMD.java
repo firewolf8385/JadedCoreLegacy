@@ -25,8 +25,8 @@
 package net.jadedmc.jadedcore.command.commands;
 
 import net.jadedmc.jadedcore.command.AbstractCommand;
-import net.jadedmc.jadedcore.utils.chat.ChatUtils;
-import net.jadedmc.jadedcore.utils.items.ItemBuilder;
+import net.jadedmc.jadedutils.chat.ChatUtils;
+import net.jadedmc.jadedutils.items.ItemBuilder;
 import org.apache.commons.lang3.StringUtils;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;

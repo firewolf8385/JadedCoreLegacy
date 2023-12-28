@@ -22,10 +22,10 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package net.jadedmc.jadedcore.utils.items;
+package net.jadedmc.jadedutils.items;
 
 import com.cryptomorin.xseries.XMaterial;
-import net.jadedmc.jadedcore.utils.chat.ChatUtils;
+import net.jadedmc.jadedutils.chat.ChatUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;

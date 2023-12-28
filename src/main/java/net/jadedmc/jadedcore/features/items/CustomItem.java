@@ -25,7 +25,7 @@
 package net.jadedmc.jadedcore.features.items;
 
 import com.cryptomorin.xseries.XMaterial;
-import net.jadedmc.jadedcore.utils.items.ItemBuilder;
+import net.jadedmc.jadedutils.items.ItemBuilder;
 import org.bukkit.inventory.ItemStack;
 
 public enum CustomItem {

@@ -2,7 +2,7 @@ package net.jadedmc.jadedcore;
 
 import me.clip.placeholderapi.expansion.PlaceholderExpansion;
 import net.jadedmc.jadedcore.features.player.JadedPlayer;
-import net.jadedmc.jadedcore.utils.chat.ChatUtils;
+import net.jadedmc.jadedutils.chat.ChatUtils;
 import org.bukkit.entity.Player;
 import org.jetbrains.annotations.NotNull;
 

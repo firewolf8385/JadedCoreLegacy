@@ -26,7 +26,7 @@ package net.jadedmc.jadedcore.command;
 
 import net.jadedmc.jadedcore.JadedCorePlugin;
 import net.jadedmc.jadedcore.command.commands.*;
-import net.jadedmc.jadedcore.utils.chat.ChatUtils;
+import net.jadedmc.jadedutils.chat.ChatUtils;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;

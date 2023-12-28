@@ -22,7 +22,7 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package net.jadedmc.jadedcore.utils.gui;
+package net.jadedmc.jadedutils.gui;
 
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;

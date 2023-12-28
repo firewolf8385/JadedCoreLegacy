@@ -27,7 +27,7 @@ package net.jadedmc.jadedcore.features.achievements;
 import net.jadedmc.jadedcore.JadedCorePlugin;
 import net.jadedmc.jadedcore.features.games.Game;
 import net.jadedmc.jadedcore.features.player.JadedPlayer;
-import net.jadedmc.jadedcore.utils.chat.ChatUtils;
+import net.jadedmc.jadedutils.chat.ChatUtils;
 import org.bukkit.entity.Player;
 
 import java.sql.PreparedStatement;

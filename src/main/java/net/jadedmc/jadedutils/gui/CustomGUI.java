@@ -22,11 +22,11 @@
  *  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  *  SOFTWARE.
  */
-package net.jadedmc.jadedcore.utils.gui;
+package net.jadedmc.jadedutils.gui;
 
 import com.cryptomorin.xseries.XMaterial;
-import net.jadedmc.jadedcore.utils.chat.ChatUtils;
-import net.jadedmc.jadedcore.utils.items.ItemBuilder;
+import net.jadedmc.jadedutils.chat.ChatUtils;
+import net.jadedmc.jadedutils.items.ItemBuilder;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
