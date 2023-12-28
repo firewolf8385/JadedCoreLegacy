@@ -81,6 +81,26 @@ public class MathUtils {
     }
 
     /**
+     * Get a trajectory vector between two locations.
+     * @param from From Location
+     * @param to To Location
+     * @return Trajectory Vector
+     */
+    public static Vector getTrajectory2d(Location from, Location to) {
+        return getTrajectory2d(from.toVector(), to.toVector());
+    }
+
+    /**
+     * Get a trajectory vector between two vectors.
+     * @param from From Vector
+     * @param to To Vector
+     * @return Trajectory Vector
+     */
+    public static Vector getTrajectory2d(Vector from, Vector to) {
+        return to.clone().subtract(from).setY(0).normalize();
+    }
+
+    /**
      * Calculate the percentage obtained compared to a total.
      * @param currentValue Obtained amount.
      * @param maxValue Total amount.
